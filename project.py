@@ -102,9 +102,7 @@ def gconnect():
     userinfo_url = "https://www.googleapis.com/oauth2/v1/userinfo"
     params = {'access_token': credentials.access_token, 'alt': 'json'}
     answer = requests.get(userinfo_url, params=params)
-
     data = answer.json()
-    
     login_session['username'] = data['name']
     login_session['picture'] = data['picture']
     login_session['email'] = data['email']
@@ -290,7 +288,6 @@ def editItem(categories_id, items_id):
             editedItem.name = editedItem.name
         else:
             editedItem.name = request.form['name']
-
         # if description is empty it will return unchange
         if request.form['description'] == "":
             editedItem.description = editedItem.description
